@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// ContactCard component
+class ContactCard extends Component {
+  render() {
+    return <div id={this.props.contactName}>
+      <h3>Name: {this.props.contactName}</h3>
+      <h3>Mobile: {this.props.mobileNumber}</h3>
+      <h3>Work: {this.props.workNumber}</h3>
+      <h3>Email: {this.props.email}</h3>
+    </div>;
+  }
+}
+
+// Define ContactCard proptypes
+ContactCard.propTypes = {
+  contactName : PropTypes.string.isRequired,
+  mobileNumber : PropTypes.number.isRequired,
+  workNumber : PropTypes.number, 
+  email : PropTypes.string.isRequired,
+}
+
+class App extends Component {
+  render() {
+    return <ContactCard contactName="John Doe" mobileNumber="8675309" email="john@doe.com"/>
+  }
 }
 
 export default App;
